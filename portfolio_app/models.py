@@ -36,3 +36,13 @@ class Portfolio(models.Model):
         return self.title
 
 
+# This is the project class
+# It has portfolio, title, and description
+class Project(models.Model):
+    portfolio = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+
+    # What is shown when the class is printed
+    def __str__(self):
+        return self.title
