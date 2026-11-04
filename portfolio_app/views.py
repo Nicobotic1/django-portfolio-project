@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView
-from .models import Portfolio, Student
+from .models import Portfolio, Student, Project
 
 
 # Create your views here.
@@ -15,6 +15,15 @@ class StudentDetailView(DetailView):
     model = Student
     template_name = 'portfolio_app/student_detail.html'
     context_object_name = 'student'
+
+class PortfolioDetailView(DetailView):
+    model = Portfolio
+    template_name = 'portfolio_app/portfolio_detail.html'
+    context_object_name = 'portfolio'
+
+    def get_object(self, queryset=None):
+        # Absolutely safe because user_id is guaranteed unique in this table
+        return get_object_or_404(Portfolio, student_id=self.kwargs.get('student_id'))
 
 
 
