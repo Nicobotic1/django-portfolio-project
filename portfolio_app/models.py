@@ -3,6 +3,7 @@ from django.db import models
 # This is a student class and each student should only have one of these
 # The student class has major, name, email, major
 class Student(models.Model):
+    # Dictionary of majors.
     MAJOR = (
         ("CSCI-BS", "BS in Computer Science"),
         ("CPEN-BS", "BS in Computer Engineering"),

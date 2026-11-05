@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+# Urls for each of the pages.
 urlpatterns = [
     path('home/', views.index, name = 'index'),
     path('students/', views.StudentListView.as_view(), name = 'student-list'),

@@ -4,6 +4,10 @@
 
 <h2>{{ portfolio.title }}</h2>
 
+<a href="{% url 'student-detail' portfolio.student_id %}">
+            Back to Student
+</a>
+
 {% if portfolio.is_active %}
 <p>This portfolio is active.</p>
 {% else %}
@@ -19,8 +23,9 @@
 <ul>
     {% for project in portfolio.project_set.all %}
     <li>{{project.title}}</li>
+        <p>Description: {{project.description}}</p>
     {% empty %}
-    <li>No projects found.</li>
+    <li>Unfortunately there are no projects found :(</li>
     {% endfor %}
 </ul>
 
